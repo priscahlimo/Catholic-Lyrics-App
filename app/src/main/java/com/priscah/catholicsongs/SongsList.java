@@ -5,8 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
 public class SongsList extends AppCompatActivity {
+    private String[] songs = new String[] {"Mimina Neema", "Uninyunyizie Maji",
+            "Nimeonja Pendo lako", "Sadaka Yangu", "Shukrani", "Simama Imara",
+            "Iyelele", "Sala yangu Ipae", "Moyo wangu", "Lazaro"};
+
+    private ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
