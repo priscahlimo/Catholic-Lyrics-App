@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.button)
-    Button mButton;
+    @BindView(R.id.button) Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
