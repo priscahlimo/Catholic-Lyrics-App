@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CatholicSongs">
         <activity
-            android:name=".SongsList"
-            android:exported="false" />
+            android:name=".SongsList">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.priscah.catholicsongs.MainActivity">
+            </meta-data>/>
+        </activity>
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
