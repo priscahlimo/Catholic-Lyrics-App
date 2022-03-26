@@ -12,15 +12,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    private Button mFindSongsButton;
-//    @BindView(R.id.button) Button mButton;
+//    private Button mFindSongsButton;
+    @BindView(R.id.button) Button mFindSongsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mFindSongsButton = (Button) findViewById(R.id.button);
+        ButterKnife.bind(this);
+//        mFindSongsButton = (Button) findViewById(R.id.button);
         mFindSongsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
