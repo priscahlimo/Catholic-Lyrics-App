@@ -11,7 +11,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 //    private Button mFindSongsButton;
     @BindView(R.id.button) Button mFindSongsButton;
 
@@ -21,13 +21,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 //        mFindSongsButton = (Button) findViewById(R.id.button);
-        mFindSongsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SongsList.class);
-                startActivity(intent);
-            }
-        });
+        mFindSongsButton.setOnClickListener(this);
+    }
+    @Override
+    public void onClick(View v) {
+        if(v== mFindSongsButton){
+        Intent intent = new Intent(MainActivity.this, SongsList.class);
+        startActivity(intent);}
     }
 
 }
+
