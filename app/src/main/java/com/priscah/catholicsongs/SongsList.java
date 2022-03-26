@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class SongsList extends AppCompatActivity {
@@ -18,6 +19,10 @@ public class SongsList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songs_list);
+        mListView = (ListView) findViewById(R.id.listSongs);
+
+        SongsArrayAdapter adapter = new SongsArrayAdapter(this, android.R.layout.simple_list_item_1, songs);
+        mListView.setAdapter(adapter);
     }
 
 }
