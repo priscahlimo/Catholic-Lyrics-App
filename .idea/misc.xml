@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/font/kaushan_script.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_songs.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/layout/activity_songs_list.xml" value="0.1" />
