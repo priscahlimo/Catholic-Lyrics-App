@@ -15,6 +15,8 @@ There are no known bugs.
 ## Technologies Used
 Java
 
+Git
+
 Android
 
 ## Support and contact details
