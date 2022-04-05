@@ -1,4 +1,4 @@
-package com.priscah.catholicsongs;
+package com.priscah.catholicsongs.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.priscah.catholicsongs.R;
+import com.priscah.catholicsongs.SongsArrayAdapter;
 
 public class SongsList extends AppCompatActivity {
     private String[] songs = new String[] {"Mimina Neema", "Uninyunyizie Maji",

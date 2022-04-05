@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.priscah.catholicsongs">
+    package="com.priscah.catholicsongs" >
 
     <application
         android:allowBackup="true"
@@ -8,19 +8,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CatholicSongs">
+        android:theme="@style/Theme.CatholicSongs" >
         <activity
-            android:name=".SongsList">
+            android:name=".ui.SongsLyricsActivity"
+            android:exported="false" />
+        <activity android:name=".ui.SongsList" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.priscah.catholicsongs.MainActivity">
-            </meta-data>/>
+                android:value="com.priscah.catholicsongs.ui.MainActivity" >
+            </meta-data>
+/>
         </activity>
-
-
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ui.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
