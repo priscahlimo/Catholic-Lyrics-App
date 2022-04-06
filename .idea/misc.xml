@@ -7,6 +7,9 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_songs.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/layout/activity_songs_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_songs_lyrics.xml" value="0.11927083333333334" />
+        <entry key="app/src/main/res/layout/activity_songs_lyrics2.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/songs_lyrics.xml" value="1.8" />
       </map>
     </option>
   </component>
