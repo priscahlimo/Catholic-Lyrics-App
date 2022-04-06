@@ -29,7 +29,7 @@ public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.Son
 
     @Override
     public songsListAdapter.SongsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_songs_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.songs_lyrics, parent, false);
         SongsViewHolder viewHolder = new SongsViewHolder(view);
         return viewHolder;
     }
@@ -62,7 +62,7 @@ public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.Son
         }
         //we are binding to our recycler views
         public void bindSongs(Songs songs) {
-            mSongTextView.setText(songs.getName());
+            mSongTextView.setText(songs.getsong());
             mChoirTextView.setText(songs.getChoir());
             mAlbumTextView.setText(songs.getAlbum());
             mLyricsTextView.setText(songs.getLyrics());

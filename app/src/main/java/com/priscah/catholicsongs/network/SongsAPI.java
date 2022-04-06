@@ -10,8 +10,5 @@ import retrofit2.http.Query;
 
 public interface SongsAPI {
     @GET("songs")
-    Call<List<Songs>> getSong(
-            @Query("location") String location,
-            @Query("term") String term
-    );
+    Call<List<Songs>> getSong();
 }

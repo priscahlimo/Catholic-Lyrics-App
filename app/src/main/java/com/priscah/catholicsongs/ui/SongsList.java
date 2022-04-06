@@ -51,7 +51,7 @@ public class SongsList extends AppCompatActivity {
 
         SongsAPI client = SongsClient.getClient();
 
-        Call<List<Songs>> call = client.getSong(location , "songs");
+        Call<List<Songs>> call = client.getSong();
 
         call.enqueue(new Callback<List<Songs>>() {
             @Override
