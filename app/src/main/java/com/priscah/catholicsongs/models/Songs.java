@@ -3,27 +3,26 @@ package com.priscah.catholicsongs.models;
 import java.util.Objects;
 
 public class Songs {
-    private String song;
+    private String name;
     private String album;
     private String choir;
     private String lyrics;
     private int id;
 
-    public Songs(String song, String album, String choir, String lyrics, int id) {
-        this.song = song;
+    public Songs(String name, String album, String choir, String lyrics, int id) {
+        this.name = name;
         this.album = album;
         this.choir = choir;
         this.lyrics = lyrics;
         this.id = id;
 
     }
-
-    public String getSong() {
-        return song;
+    public String getName() {
+        return name;
     }
 
-    public void setSong(String song) {
-        this.song = song;
+    public void setName(String song) {
+        this.name = song;
     }
 
     public String getAlbum() {
@@ -65,7 +64,7 @@ public class Songs {
         if (!(o instanceof Songs)) return false;
         Songs songs = (Songs) o;
         return id == songs.id &&
-                Objects.equals(song, songs.song) &&
+                Objects.equals(name, songs.name) &&
                 Objects.equals(album, songs.album) &&
                 Objects.equals(choir, songs.choir) &&
                 Objects.equals(lyrics, songs.lyrics);
@@ -74,6 +73,6 @@ public class Songs {
 
     @Override
     public int hashCode() {
-        return Objects.hash(song, album, choir, lyrics, id);
+        return Objects.hash(name, album, choir, lyrics, id);
     }
 }

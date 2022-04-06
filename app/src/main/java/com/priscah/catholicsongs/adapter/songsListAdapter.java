@@ -19,13 +19,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.SongsViewHolder>{
-    private Songs mSongs; //reference to the modal class
+    private List<Songs> mSongs;
     private Context mContext;
 
-    public songsListAdapter(Context context, Songs songs) {
+    public songsListAdapter(List<Songs> sales, Context context){
         mContext = context;
-        mSongs = songs;
+        mSongs = sales;
     }
+
     @Override
     public songsListAdapter.SongsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_songs_list, parent, false);
@@ -34,12 +35,12 @@ public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.Son
     }
 
     @Override
-    public void onBindViewHolder(songsListAdapter.SongsViewHolder holder, int id) {
-        holder.bindSongs(mSongs.getId(id));
+    public void onBindViewHolder(songsListAdapter.SongsViewHolder holder, int position) {
+       holder.bindSongs(mSongs.get(position));
     }
     @Override
     public int getItemCount() {
-        return mSongs.getId();
+        return mSongs.size();
     }
 
     //Below is an inner/nested class that will extend the recyclerview.viewHolder class
@@ -61,7 +62,7 @@ public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.Son
         }
         //we are binding to our recycler views
         public void bindSongs(Songs songs) {
-            mSongTextView.setText(songs.getSong());
+            mSongTextView.setText(songs.getName());
             mChoirTextView.setText(songs.getChoir());
             mAlbumTextView.setText(songs.getAlbum());
             mLyricsTextView.setText(songs.getLyrics());
