@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "573506497812",
+    "project_id": "catholic-songs-d7fde",
+    "storage_bucket": "catholic-songs-d7fde.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573506497812:android:656cd57eb2e52996cfa601",
+        "android_client_info": {
+          "package_name": "com.priscah.catholicsongs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573506497812-1pt2kdh9suai5q3hdvdav8c7vu65scvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPPNkRWAC0t6NfuZkA3UrNshYVHvWxKdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573506497812-1pt2kdh9suai5q3hdvdav8c7vu65scvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

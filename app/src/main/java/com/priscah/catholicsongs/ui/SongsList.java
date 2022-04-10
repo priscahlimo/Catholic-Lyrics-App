@@ -31,13 +31,11 @@ import retrofit2.Response;
 
 public class SongsList extends AppCompatActivity {
 
-//    @BindView(R.id.songNameTextView) TextView mShopNameTextView;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
 
     private songsListAdapter mAdapter;
-//    private ListView mListView;
     List<Songs> songs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +62,9 @@ public class SongsList extends AppCompatActivity {
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
                     showSongs();
+                    hideProgressBar();
                 }else{
+//
                     showUnsuccessfulMessage();
 
                 }
@@ -72,7 +72,7 @@ public class SongsList extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Songs>> call, Throwable t) {
-                hideProgressBar();
+
                 showFailureMessage();
             }
         });
