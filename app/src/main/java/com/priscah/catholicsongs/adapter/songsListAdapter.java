@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.priscah.catholicsongs.R;
@@ -51,7 +52,8 @@ public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.Son
         @BindView(R.id.songsChoir)
         TextView mChoirTextView;
         @BindView(R.id.songsAlbum) TextView mAlbumTextView;
-        @BindView(R.id.songsLyrics) TextView mLyricsTextView;
+        @BindView(R.id.songsLyrics)
+        TextView mLyricsTextView;
 
         private Context mContext;
 
@@ -62,9 +64,9 @@ public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.Son
         }
         //we are binding to our recycler views
         public void bindSongs(Songs songs) {
-            mSongTextView.setText(songs.getsong());
-            mChoirTextView.setText(songs.getChoir());
-            mAlbumTextView.setText(songs.getAlbum());
+            mSongTextView.setText( "Song: "+ " " + songs.getsong());
+            mChoirTextView.setText("Choir: "+ " " + songs.getChoir());
+            mAlbumTextView.setText("Album: "+ " " +songs.getAlbum());
             mLyricsTextView.setText(songs.getLyrics());
 
         }
