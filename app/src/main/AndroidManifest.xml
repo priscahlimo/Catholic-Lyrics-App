@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CatholicSongs">
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.MainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.CreateAccountActivity"
@@ -23,7 +23,7 @@
                 android:value="com.priscah.catholicsongs.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
