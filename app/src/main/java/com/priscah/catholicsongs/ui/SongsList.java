@@ -84,22 +84,8 @@ public class SongsList extends AppCompatActivity {
 
     }
 
-    private void showSongs() {
-        mRecyclerView.setVisibility(View.VISIBLE);
-    }
-    private void showFailureMessage() {
-        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
-        mErrorTextView.setVisibility(View.VISIBLE);
-    }
 
-    private void showUnsuccessfulMessage() {
-        mErrorTextView.setText("Something went wrong. Please try again later");
-        mErrorTextView.setVisibility(View.VISIBLE);
-    }
-
-    private void hideProgressBar() {
-        mProgressBar.setVisibility(View.GONE);
-    }
+//    search widget
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -152,6 +138,25 @@ public class SongsList extends AppCompatActivity {
             }
         });
         return true;
+    }
+
+//end of search functionality
+
+    private void showSongs() {
+        mRecyclerView.setVisibility(View.VISIBLE);
+    }
+    private void showFailureMessage() {
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnsuccessfulMessage() {
+        mErrorTextView.setText("Something went wrong. Please try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
     }
 
 }
