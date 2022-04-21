@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
-    private final ItemTouchHelperAdapter mAdapter;
+    private  ItemTouchHelperAdapter mAdapter;
 
     //  This constructor takes an ItemTouchHelperAdapter parameter. When implemented in
     //  FirebaseRestaurantListAdapter, the ItemTouchHelperAdapter instance will pass the gesture event back to the
@@ -22,7 +22,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public boolean isLongPressDragEnabled() {
-        return true;
+        return false;
     }
 
     //  The method below informs the ItemTouchHelperAdapter that swipe gestures are enabled.
@@ -37,10 +37,9 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     // For example, when a user drags a list item, they press 'Down' to begin the drag and lift their finger, 'Up',  to end the drag.
 
     @Override
-    public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-        final int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
-        final int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
-        return makeMovementFlags(dragFlags, swipeFlags);
+    public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+        int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+        return makeMovementFlags(dragFlags, 0);
     }
 
     //  The method below notifies the adapter that an item has moved.
@@ -48,22 +47,26 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     //  which will eventually handle updating the restaurants ArrayList to reflect the item's new position.
 
     @Override
-    public boolean onMove(@NonNull RecyclerView recyclerView, RecyclerView.ViewHolder source,
+    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
                           RecyclerView.ViewHolder target) {
-        if (source.getItemViewType() != target.getItemViewType()) {
-            return false;
-        }
-        mAdapter.onItemMove(source.getAbsoluteAdapterPosition(), target.getAbsoluteAdapterPosition());
+        mAdapter.onItemMove(viewHolder.getAdapterPosition(), target.getAdapterPosition());
         return true;
     }
+
+//    @Override
+//    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+//        // Notify Adapter of the moved item!
+//        recyclerView.getAdapter().notifyItemMoved(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+//        return true;
+//    }
 
     //  The method below notifies the adapter that an item was dismissed.
     //  This triggers the onItemDismiss override in our Firebase adapter
     //  which will eventually handle deleting this item from the user's "Saved Restaurants" in Firebase.
 
     @Override
-    public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
-        mAdapter.onItemDismiss(viewHolder.getAbsoluteAdapterPosition());
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+        mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
     }
 
 }

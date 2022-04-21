@@ -1,6 +1,7 @@
 package com.priscah.catholicsongs.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +28,9 @@ import com.priscah.catholicsongs.constants;
 import com.priscah.catholicsongs.models.Songs;
 import com.priscah.catholicsongs.network.SongsAPI;
 import com.priscah.catholicsongs.network.SongsClient;
+import com.priscah.catholicsongs.util.ItemTouchHelperAdapter;
+import com.priscah.catholicsongs.util.OnStartDragListener;
+import com.priscah.catholicsongs.util.SimpleItemTouchHelperCallback;
 
 import java.util.List;
 
@@ -36,7 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SongsList extends AppCompatActivity {
+public class SongsList extends AppCompatActivity implements OnStartDragListener{
 
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
@@ -44,7 +48,14 @@ public class SongsList extends AppCompatActivity {
 
 
     private songsListAdapter mAdapter;
+    private ItemTouchHelper mItemTouchHelper;
+
+
     List<Songs> songs;
+    RecyclerView recyclerView;
+   OnStartDragListener  startDragListener;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,11 +72,19 @@ public class SongsList extends AppCompatActivity {
             public void onResponse(Call<List<Songs>> call, Response<List<Songs>> response) {
                 if(response.isSuccessful()){
                     songs = response.body();
-                    mAdapter = new songsListAdapter(songs,SongsList.this);
+                    mAdapter = new songsListAdapter(songs,SongsList.this,startDragListener);
+
+                    ItemTouchHelper.Callback callback =
+                            new SimpleItemTouchHelperCallback(mAdapter);
+                    ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+                    touchHelper.attachToRecyclerView(recyclerView);
+
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SongsList.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
+
+
                     showSongs();
                     hideProgressBar();
                 }else{
@@ -73,6 +92,8 @@ public class SongsList extends AppCompatActivity {
                     showUnsuccessfulMessage();
 
                 }
+
+
             }
 
             @Override
@@ -108,7 +129,7 @@ public class SongsList extends AppCompatActivity {
                     public void onResponse(Call<List<Songs>> call, Response<List<Songs>> response) {
                         if(response.isSuccessful()){
                             songs = response.body();
-                            mAdapter = new songsListAdapter(songs,SongsList.this);
+                            mAdapter = new songsListAdapter(songs,SongsList.this,startDragListener);
                             mRecyclerView.setAdapter(mAdapter);
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SongsList.this);
                             mRecyclerView.setLayoutManager(layoutManager);
@@ -157,6 +178,12 @@ public class SongsList extends AppCompatActivity {
 
     private void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
+    }
+
+    //on start drag method implementation
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
     }
 
 }
