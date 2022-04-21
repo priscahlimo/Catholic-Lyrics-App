@@ -46,19 +46,14 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     //  This triggers the onItemMove override in our Firebase adapter,
     //  which will eventually handle updating the restaurants ArrayList to reflect the item's new position.
 
+
+
     @Override
-    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
-                          RecyclerView.ViewHolder target) {
-        mAdapter.onItemMove(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+        // Notify Adapter of the moved item!
+        recyclerView.getAdapter().notifyItemMoved(viewHolder.getAdapterPosition(), target.getAdapterPosition());
         return true;
     }
-
-//    @Override
-//    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-//        // Notify Adapter of the moved item!
-//        recyclerView.getAdapter().notifyItemMoved(viewHolder.getAdapterPosition(), target.getAdapterPosition());
-//        return true;
-//    }
 
     //  The method below notifies the adapter that an item was dismissed.
     //  This triggers the onItemDismiss override in our Firebase adapter

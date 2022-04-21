@@ -28,8 +28,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.SongsViewHolder> implements ItemTouchHelperAdapter {
-    private List<Songs> mSongs;
-    private Context mContext;
+    private final List<Songs> mSongs;
+    private final Context mContext;
     private final OnStartDragListener  mStartDragListener;
 
     public songsListAdapter(List<Songs> mSongs, Context mContext, OnStartDragListener startDragListener) {
@@ -53,7 +53,9 @@ public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.Son
         holder.handleView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                mStartDragListener.onStartDrag(holder);
+                if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
+                    mStartDragListener.onStartDrag(holder);
+                }
                 return false;
             }
         });
@@ -104,9 +106,7 @@ public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.Son
         @BindView(R.id.dragIcon)
         ImageView handleView;
 
-
-
-        private Context mContext;
+        private final Context mContext;
 
 
         public SongsViewHolder(View itemView) {
@@ -116,11 +116,12 @@ public class songsListAdapter  extends RecyclerView.Adapter<songsListAdapter.Son
         }
         //we are binding to our recycler views
         public void bindSongs(Songs songs) {
+            handleView = (ImageView) itemView.findViewById(R.id.dragIcon);
             mSongTextView.setText( "Song: "+ " " + songs.getsong());
             mChoirTextView.setText("Choir: "+ " " + songs.getChoir());
             mAlbumTextView.setText("Album: "+ " " +songs.getAlbum());
             mLyricsTextView.setText(songs.getLyrics());
-            handleView = (ImageView) itemView.findViewById(R.id.dragIcon);
+
 
         }
 

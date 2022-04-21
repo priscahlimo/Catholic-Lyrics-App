@@ -105,8 +105,14 @@ public class SongsList extends AppCompatActivity implements OnStartDragListener{
 
     }
 
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
+    }
 
-//    search widget
+
+
+    //    search widget
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -181,9 +187,5 @@ public class SongsList extends AppCompatActivity implements OnStartDragListener{
     }
 
     //on start drag method implementation
-    @Override
-    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
-        mItemTouchHelper.startDrag(viewHolder);
-    }
 
 }
